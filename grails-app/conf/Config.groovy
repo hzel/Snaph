@@ -90,4 +90,12 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+	
+	warn   'com.onb.snaph.log' 
+	error   "StackTrace"
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.onb.snaph.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.onb.snaph.UserRole'
+grails.plugins.springsecurity.authority.className = 'com.onb.snaph.Role'
