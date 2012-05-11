@@ -10,4 +10,8 @@ class Comment {
     static constraints = {
     }
 
+	@Override 
+	public String toString() {
+		comment	
+	}
 }
