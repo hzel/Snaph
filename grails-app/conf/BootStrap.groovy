@@ -5,7 +5,8 @@ class BootStrap {
     def init = { servletContext ->
 	def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
       def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
-
+	  def fbUserRole = new Role(authority: 'ROLE_FACEBOOK').save(failOnError: true, flush: true)
+	  
       def snaphUser1 = new SnaphUser(username: 'blessie', enabled: true, password: 'blessie', facebookID: '100000081560972')
       snaphUser1.save(flush: true)
 
@@ -20,7 +21,7 @@ class BootStrap {
 	UserRole.create snaphUser3, userRole, true
 
       assert User.count() == 3
-      assert Role.count() == 2
+      assert Role.count() == 3
       assert UserRole.count() == 3
 
 	def electronics = new Category(category: 'Electronics').save(flush: true)
