@@ -117,6 +117,17 @@
 					</g:each>
 				</ul>
 			</div>
+			
+			   <h2>Facebook Authentication</h2>
+            <sec:ifNotGranted roles="ROLE_FACEBOOK">
+                <ul>
+                    <li><facebookAuth:connect permissions="email"/> with permissions: email</li>
+                    <li><facebookAuth:connect permissions="${['email', 'user_about_me']}"/> with permissions: email, user_about_me</li>
+                </ul>
+            </sec:ifNotGranted>
+            <sec:ifAllGranted roles="ROLE_FACEBOOK">
+                Welcome! <sec:username/>
+            </sec:ifAllGranted>
 		</div>
 	</body>
 </html>
