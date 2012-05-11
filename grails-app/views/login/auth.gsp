@@ -114,6 +114,7 @@
 			</p>
 		</form>
 	</div>
+	<facebookAuth:connect permissions="email,user_about_me"/>
 </div>
 <script type='text/javascript'>
 	<!--
