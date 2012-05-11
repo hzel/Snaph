@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'image', 'error')} required">
+	<label for="image">
+		<g:message code="item.image.label" default="Image" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" id="image" name="image" />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'category', 'error')} required">
 	<label for="category">
 		<g:message code="item.category.label" default="Category" />
@@ -41,22 +49,6 @@
 		
 	</label>
 	<g:textField name="description" value="${itemInstance?.description}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'image', 'error')} ">
-	<label for="image">
-		<g:message code="item.image.label" default="Image" />
-		
-	</label>
-	<g:textField name="image" value="${itemInstance?.image}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'itemID', 'error')} required">
-	<label for="itemID">
-		<g:message code="item.itemID.label" default="Item ID" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="itemID" required="" value="${fieldValue(bean: itemInstance, field: 'itemID')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'itemName', 'error')} ">

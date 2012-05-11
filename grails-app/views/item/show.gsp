@@ -23,6 +23,13 @@
 			</g:if>
 			<ol class="property-list item">
 			
+				<g:if test="${itemInstance?.image}">
+				<li class="fieldcontain">
+					<span id="image-label" class="property-label"><g:message code="item.image.label" default="Image" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${itemInstance?.category}">
 				<li class="fieldcontain">
 					<span id="category-label" class="property-label"><g:message code="item.category.label" default="Category" /></span>
@@ -57,24 +64,6 @@
 					<span id="description-label" class="property-label"><g:message code="item.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${itemInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.image}">
-				<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="item.image.label" default="Image" /></span>
-					
-						<span class="property-value" aria-labelledby="image-label"><g:fieldValue bean="${itemInstance}" field="image"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.itemID}">
-				<li class="fieldcontain">
-					<span id="itemID-label" class="property-label"><g:message code="item.itemID.label" default="Item ID" /></span>
-					
-						<span class="property-value" aria-labelledby="itemID-label"><g:fieldValue bean="${itemInstance}" field="itemID"/></span>
 					
 				</li>
 				</g:if>

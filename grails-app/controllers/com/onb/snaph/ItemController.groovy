@@ -41,6 +41,15 @@ class ItemController {
         [itemInstance: itemInstance]
     }
 
+	def viewImage(){
+		def itemInstance = Item.get(params.id)
+		byte[] imageArray = itemInstance.image
+		response.setHeader('Content-length', imageArray.length)
+		response.contentType = 'image/jpg' // or the appropriate image content type
+		response.outputStream << imageArray
+		response.outputStream.flush()
+	}
+	
     def edit() {
         def itemInstance = Item.get(params.id)
         if (!itemInstance) {

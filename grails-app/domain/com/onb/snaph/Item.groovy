@@ -5,9 +5,10 @@ class Item {
 	static belongsTo = ['snaphUser': SnaphUser, 'category':Category]
 	static hasMany = ['comments': Comment]
 
-	Long itemID
+//	Long itemID
 	String itemName
-	String image
+//	String image
+	byte[] image
 	String description
 	String price
 	Date dateAdded
@@ -20,7 +21,8 @@ class Item {
 //	description blank:false, null:false
 //	price blank:false, null:false
 //	dateAdded blank:false, null:false
-    }
+    	image maxSize:1024*1024*10
+		}
 
 	@Override 
 	public String toString() {
