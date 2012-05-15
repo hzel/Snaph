@@ -11,7 +11,10 @@ import org.junit.*
 @TestFor(UploadController)
 class UploadControllerTests {
 
-    void testSomething() {
-       fail "Implement me"
+	/**
+	 * UploadController can receive data from httpPost 
+	 */
+    void retreiveDataFromHTTPPost() {
+       
     }
 }
