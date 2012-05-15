@@ -1,0 +1,294 @@
+
+			.header {
+			   position: relative;
+			   height: 100px;
+			   background-color: #989898; 
+			   padding: 10px;
+			}
+			.menu_bar {
+			   background-color: #A8A8A8; 
+			   position: relative;
+			   height: 50px;
+			   padding: 5px;
+			}
+			.row_space {
+			   position: relative;
+			   float: left;
+			   left: 0.00em;
+			   width: 100%;
+			   height: 20px;
+			   background-color: #cccccc;
+			}
+			.left0 {
+			   position: relative;
+			   float: left;
+			   left: 60px;
+			   width: 22.57em;
+			   height: 300px;
+			   background-color: #ffffff;
+			}
+			.wrapper_on_hover1 {
+			   opacity: 0;
+			   position: absolute;
+			   left: 0px;
+			   top: 0px;
+			   width: 248px;
+			   height: 239px;
+			   padding: 10px;
+			}
+			.wrapper_on_hover1:hover {
+			   opacity: 1;
+			}
+			.details_button {
+			   position: absolute;
+			   bottom: 40px;
+			   right: 90px;
+   			   cursor: pointer;
+   			   margin-right: -57px;
+			}
+			.comments_button {
+			   position: absolute;
+			   top: 20px;
+			   right: 50px;
+			}
+			.left1 {
+			   position: relative;
+			   float: left;
+			   left: 85px;
+			   width: 22.57em;
+			   height: 300px;
+			   background-color: #ffffff
+			}
+			.left2 {
+			   position: relative;
+			   float: left;
+			   left: 110px;
+			   width: 22.57em;
+			   height: 300px;
+			   background-color: #ffffff
+			}
+			.left3 {
+			   position: relative;
+			   float: left;
+			   left: 135px;
+			   width: 22.57em; /** equivalent to 248px; **/
+			   height: 300px;
+			   background-color: #ffffff
+			}
+			.item_photo {
+			   margin: 10px;
+			   width: 226px;
+			   height: 140px;
+			   border: 1px solid #000000;
+			}
+			.item_name {
+			   margin-top: -5px;
+			   margin-left: 10px;
+			   font-weight: bold;
+			   font-size: 18px;
+			   text-transform:uppercase;
+			}
+			.item_price {
+			   margin-top: -20px;
+			   margin-left: 10px;
+			   font-size: 14px;
+			   text-transform:uppercase;
+			}
+			.user_wrapper {
+			   margin-top: 44px; 
+			   width: 248px;
+			   height: 61px;
+			   background-color: #E0E0E0;  
+			}
+			.user_photo {
+			   position: absolute;
+			   margin: 10px;
+			   width: 40px;
+			   height: 40px;
+			   border: 1px solid #000000;
+			}
+			.user_name {
+			   float: left;
+			   padding-left: 70px;
+			   padding-top: 20px;
+			   font-weight: bold;
+			   font-size: 14px;
+			}
+			.details_outer_div {
+display:none;
+			   background-color: #000000;
+			   position: fixed;
+			   height: 100%;
+			   width: 100%;
+			   top: 0;
+			   opacity: .8;
+			   z-index: 20;
+			}
+			.details_div {
+display:none;
+			   background-color: #ffffff;
+			   position: fixed;
+			   margin-top: -23%;
+			   margin-left: 15%;
+			   height: 640px;
+			   width: 800px;
+			   padding: 20px;
+			   z-index: 21;
+			   border: 1px solid #ffffff;
+			}
+			.item_photo_on_details {
+			   width: 500px;
+			   height: 300px;
+			}
+			.item_price_on_details {
+			   float: right;
+			   margin-top: 5px;
+			   margin-right: 230px;
+			}
+			.user_wrapper_on_details {
+			   float: right;
+			   margin-top: -270px;
+			   margin-right: 25px;
+			   width: 248px;
+			   height: 61px;
+			   background-color: #E0E0E0;  
+			}
+			.title_description_on_details {
+			   margin-top: -190px;
+			   margin-left: 527px;
+			   font-size: 14px;
+			   font-weight: bold;
+			}
+			.item_description_on_details {
+			   margin-top: -10px;
+			   margin-left: 526px;
+			   height: 150px;
+			   width: 232px;
+			   overflow: auto;
+			   background-color: #ffffff;
+			   padding: 8px;
+			}
+			#detailed_item_name {
+			   margin-top: -5px;
+			   margin-left: 10px;
+			   font-weight: bold;
+			   font-size: 18px;
+			   text-transform:uppercase;
+			}
+			#item_price_on_details {
+			   margin-top: -20px;
+			   margin-left: 10px;
+			   font-size: 14px;
+			   text-transform:uppercase;
+			}
+			.comments_title_on_details {
+			   margin-top: 10px;
+			   height: 40px;
+			   width: 800px;
+			   background-color: #E0E0E0;  
+			}
+			.comments_title {
+			   padding-top: 10px;
+			   margin-left: 20px;
+			   font-size: 15px;
+			}
+			.comments_on_details {
+			   margin-top: 10px;
+			   margin-left: 0px;
+			   height: 150px;
+			   width: 782px;
+			   overflow: auto;
+			   background-color: #ffffff;
+			   border: 1px solid #E0E0E0;
+			   padding: 8px;
+			   padding-top: 0px;
+			}
+			.single_comment_on_details {
+			   margin-top: 10px;
+			   background-color: #ffffff;
+			   border: 1px solid #E0E0E0;
+			   height: 50px;
+			}
+			.user_on_single_comment {
+			   margin-top: -1px;
+			   width: 150px;
+			   height: 50px;
+			}
+			.username_on_single_comment {
+			   margin-top: -40px;
+			   margin-left: 60px;
+			   font-size: 12px;
+			   font-weight: bold;
+			}
+			.userphoto_on_single_comment {
+			   padding: 5px;
+			   padding-left: 10px;
+			   width: 40px;
+			   height: 40px;
+			}
+			.comment_description_on_single_comment {
+			   margin-top: -50px;
+			   margin-left: 151px;
+			   padding: 7px;
+			   width: 600px;
+			   height: 30px;
+			}
+			.comment_textfield {
+			   margin-top: 10px;
+			   margin-left: 0px;
+			   border: 1px solid #E0E0E0;
+			}
+			.comment_on_title_on_details {
+			   margin-top: 10px;
+			   font-size: 12px;
+			}
+			
+			.user_wrapper_on_user_gallery {
+			   margin-top: -17%;
+			   background-color: #ffffff;
+			   height: 100%;
+			   width: 250px;
+			   position: absolute;
+			   padding: 15px;
+			   border: 1px solid #000000;
+			   z-index: 15;
+			}
+			.items_category_on_user_gallery {
+				position: absolute;
+				margin-top: -12%;
+				margin-left: 350px;
+				font-size: 32px;
+				z-index: 25;
+			}
+			.items_wrapper_on_user_gallery {
+				margin-top: 10%;
+				margin-left: 22%;
+			}
+			.user_photo_on_user_gallery {
+				width: 245px;
+				border: 1px solid #000000;
+			}
+			.user_name_on_user_gallery {
+				font-weight: bold;
+				font-size: 16px;
+			}
+			.total_items_on_user_gallery {
+				font-size: 13px;
+			}
+			.total_number {
+				font-weight: bold;
+			}
+			.sort_items_on_user_gallery {
+				font-size: 14px;
+				font-weight: bold;
+			}
+			.category_list_on_user_gallery {
+				font-size: 13px;
+			}
+			body {
+			   border-width: 0px;
+			   padding: 0px;
+			   margin: 0px;
+			   font-size: 11px;
+			   background-color: #cccccc;
+			}
