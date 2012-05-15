@@ -2,7 +2,7 @@ package com.onb.snaph
 
 class Category {
 
-	static hasMany = ['items': Item]
+//	static hasMany = ['items': Item]
 
 	String category
 
