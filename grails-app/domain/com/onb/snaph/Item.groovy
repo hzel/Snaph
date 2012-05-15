@@ -2,12 +2,12 @@ package com.onb.snaph
 
 class Item {
 
-	static belongsTo = ['snaphUser': SnaphUser, 'category':Category]
+//	static belongsTo = ['snaphUser': SnaphUser, 'category':Category]
+	static belongsTo = ['snaphUser': SnaphUser]
 	static hasMany = ['comments': Comment]
 
 //	Long itemID
 	String itemName
-//	String image
 	byte[] image
 	String description
 	String price

@@ -109,4 +109,11 @@ class ItemController {
             redirect(action: "show", id: params.id)
         }
     }
+	
+	def displayLogo = {
+		def itemInstance = Item.get(params.id)
+		response.contentType = 'image/jpeg'
+		response.contentLength = itemInstance.image.length
+		response.outputStream.write(itemInstance.image)
+	}
 }
