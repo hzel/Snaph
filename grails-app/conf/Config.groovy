@@ -104,3 +104,6 @@ grails.plugins.springsecurity.authority.className = 'com.onb.snaph.Role'
 grails.plugins.springsecurity.facebook.domain.classname='com.onb.snaph.FacebookUser'
 grails.plugins.springsecurity.facebook.appId='127828560685665'
 grails.plugins.springsecurity.facebook.secret='7c9b96306e4a35af94a32bf320da20aa'
+
+grails.plugins.springsocial.facebook.clientId='127828560685665'
+grails.plugins.springsocial.facebook.clientSecret='7c9b96306e4a35af94a32bf320da20aa'
