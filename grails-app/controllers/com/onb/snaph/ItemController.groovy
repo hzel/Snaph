@@ -12,9 +12,9 @@ class ItemController {
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
+        [itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count()]
     }
-
+	
     def create() {
         [itemInstance: new Item(params)]
     }
@@ -40,15 +40,6 @@ class ItemController {
 
         [itemInstance: itemInstance]
     }
-
-	def viewImage(){
-		def itemInstance = Item.get(params.id)
-		byte[] imageArray = itemInstance.image
-		response.setHeader('Content-length', imageArray.length)
-		response.contentType = 'image/jpg' // or the appropriate image content type
-		response.outputStream << imageArray
-		response.outputStream.flush()
-	}
 	
     def edit() {
         def itemInstance = Item.get(params.id)
