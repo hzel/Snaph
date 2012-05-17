@@ -30,7 +30,7 @@
 			</div>
 	   	</div>
 	   	<div class="menu_bar">
-	      	<a class="home_button" href="http://www.facebook.com/">HOME</a>
+	      	<a class="home_button" href="${createLink(action: 'list', controller: 'item')}">HOME</a>
 	      	<input type="text"></input>
 	      	<button onclick="">Search</button>
 	   	</div>
