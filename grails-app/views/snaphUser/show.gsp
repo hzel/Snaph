@@ -3,108 +3,74 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="snaph">
+		<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>  
+    	<script src="popup.js" type="text/javascript"></script> 
 		<g:set var="entityName" value="${message(code: 'snaphUser.label', default: 'SnaphUser')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-snaphUser" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-snaphUser" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list snaphUser">
-			
-				<g:if test="${snaphUserInstance?.username}">
-				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="snaphUser.username.label" default="Username" /></span>
-					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${snaphUserInstance}" field="username"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="snaphUser.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${snaphUserInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.facebookID}">
-				<li class="fieldcontain">
-					<span id="facebookID-label" class="property-label"><g:message code="snaphUser.facebookID.label" default="Facebook ID" /></span>
-					
-						<span class="property-value" aria-labelledby="facebookID-label"><g:fieldValue bean="${snaphUserInstance}" field="facebookID"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.accountExpired}">
-				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="snaphUser.accountExpired.label" default="Account Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${snaphUserInstance?.accountExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.accountLocked}">
-				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="snaphUser.accountLocked.label" default="Account Locked" /></span>
-					
-						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${snaphUserInstance?.accountLocked}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.enabled}">
-				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="snaphUser.enabled.label" default="Enabled" /></span>
-					
-						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${snaphUserInstance?.enabled}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.items}">
-				<li class="fieldcontain">
-					<span id="items-label" class="property-label"><g:message code="snaphUser.items.label" default="Items" /></span>
-					
-						<g:each in="${snaphUserInstance.items}" var="i">
-						<span class="property-value" aria-labelledby="items-label"><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${snaphUserInstance?.passwordExpired}">
-				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="snaphUser.passwordExpired.label" default="Password Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${snaphUserInstance?.passwordExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${snaphUserInstance?.id}" />
-					<g:link class="edit" action="edit" id="${snaphUserInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
+		<body>
+		<div id="user_gallery" style="margin-top: 20.3%; position: relative;">
+		 	<div class="user_wrapper_on_user_gallery">
+		 		<g:img uri="/home/giselle/Pictures/Screenshot from 2012-04-23 13:03:21.png" class="user_photo_on_user_gallery" />
+		 		<p class="user_name_on_user_gallery">${fieldValue(bean: snaphUserInstance, field: "username")}</p>
+		 		<p class="total_items_on_user_gallery">You have posted <b>${snaphUserInstance.items.size()}</b> items in your store.</p>
+		 	</div>
+		 	<div class="items_wrapper_on_user_gallery">
+			 	<g:each in="${snaphUserInstance.items}" status="i" var="itemInstance">
+			 		<div class=<%= "left" + ((i%3)+1) %>>
+			 			<img src="${createLink(controller: 'item', action:'displayLogo', id:"${itemInstance.id}")}" class="item_photo" />
+						<p class="item_name">${fieldValue(bean: itemInstance, field: "itemName")}</p>
+						<p class="item_price">${fieldValue(bean: itemInstance, field: "price")}</p>
+					    <div class="wrapper_on_hover1">
+							<a class="fbicon_button" href="http://www.facebook.com/"><g:img uri="/images/fb-icon.png"/></a>
+							<g:img uri="/images/details-button.gif" class="details_button" id="${itemInstance.id}" 
+								onclick="showContainer(${itemInstance.id});"/>
+						</div> <!-- end of wrapper_on_hover -->
+			 		</div>
+			 		<g:if test="${( ((i%3)+1) == 3)}">
+			 			<div class= "row_space"></div>
+			 		</g:if>
+			 		
+				 <div class="container" id= <%= "container" + "${itemInstance.id}" %> 
+				 	style="margin-top: -26%; margin-left: -29%; visibility: hidden;">
+				 	<div class="details_outer_div">
+				    </div>
+					<div class="details_div" >
+						<p class="detailed_item_name">${fieldValue(bean: itemInstance, field: "itemName")}</p>
+					   	<img src="${createLink(controller: 'item', action:'displayLogo', id:"${itemInstance.id}")}" class="item_photo_on_details" />
+					   	<p class="item_price_on_details">${fieldValue(bean: itemInstance, field: "price")}</p>
+			            <div class="user_wrapper_on_details">
+							<img class="user_photo" src="/home/giselle/261158_284801801673_1294994_q.jpg"/>
+					   		<a class="user_name" href="http://www.facebook.com/">${fieldValue(bean: itemInstance, field: "snaphUser")}</a>
+					   	</div>
+			 		   	<p class="title_description_on_details">Description</p>
+					   	<div class="item_description_on_details">
+							${fieldValue(bean: itemInstance, field: "description")}
+					   	</div>
+					   	<div class="comments_title_on_details">
+					    	<p class="comments_title">What people say about ${fieldValue(bean: itemInstance, field: "itemName")}</p>
+					   	</div>
+					   	<div class="comments_on_details">
+							<div class="single_comment_on_details">
+								<div class="user_on_single_comment">
+									<img class="userphoto_on_single_comment" src="/home/giselle/261158_284801801673_1294994_q.jpg"></img>
+									<p class="username_on_single_comment">Username</p>
+								</div>
+								<div class="comment_description_on_single_comment">
+									comment comment comment comment comment comment comment comment comment
+								</div>
+					   		</div>
+					   	</div> <!-- end of comments_on_details -->
+				        <div class="comment_on_title_on_details">Comment on ${fieldValue(bean: itemInstance, field: "itemName")}</div>
+					    <textarea class="comment_textfield" rows="2" cols="88" value="Comment on this product..."></textarea> 
+					    <input type="submit" value="Submit" />
+				 	</div> <!-- end of details_div -->
+				</div> <!-- end of container -->    
+				
+			 	</g:each>
+		 	</div>
+		 </div>
 	</body>
 </html>
