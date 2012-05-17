@@ -21,7 +21,12 @@ if (typeof jQuery !== 'undefined') {
 			function hideUserGallery(){
 				document.getElementById('user_gallery').style.visibility="hidden";
 			}
-
+function showContainer(id){
+	document.getElementById('container'+id).style.visibility="visible";
+}
+function hideContainer(id){
+	document.getElementById('container'+id).style.visibility="hidden";
+}
 
 ﻿/***************************/
 //@Author: Adrian "yEnS" Mato Gondelle
@@ -54,6 +59,9 @@ function disablePopup(){
 		$(".details_outer_div").fadeOut("slow");
 		$(".details_div").fadeOut("slow");
 		popupStatus = 0;
+		$(".container").css({
+			"visibility": "hidden"
+		});
 	}
 }
 
@@ -78,7 +86,7 @@ $(document).ready(function(){
 		disablePopup();
 	});
 	//Press Escape event!
-	$(document).keypress(function(e){
+	$(document).keyup(function(e){
 		if(e.keyCode==27 && popupStatus==1){
 			disablePopup();
 		}
