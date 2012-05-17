@@ -5,7 +5,7 @@ class Comment {
 	static belongsTo = ['item':Item, 'user':SnaphUser]
 
 	String comment
-	Date dateAdded
+	Date dateAdded = new Date()
 
     static constraints = {
     }
