@@ -1,108 +1,71 @@
 
-<%@ page import="com.onb.snaph.Item" %>
+<%@ page import="com.onb.snaph.Item"%>
 <!doctype html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-item" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-item" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list item">
-			
-				<g:if test="${itemInstance?.image}">
-				<li class="fieldcontain">
-					<span id="image-label" class="property-label"><g:message code="item.image.label" default="Image" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.category}">
-				<li class="fieldcontain">
-					<span id="category-label" class="property-label"><g:message code="item.category.label" default="Category" /></span>
-					
-						<span class="property-value" aria-labelledby="category-label"><g:link controller="category" action="show" id="${itemInstance?.category?.id}">${itemInstance?.category?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.comments}">
-				<li class="fieldcontain">
-					<span id="comments-label" class="property-label"><g:message code="item.comments.label" default="Comments" /></span>
-					
-						<g:each in="${itemInstance.comments}" var="c">
-						<span class="property-value" aria-labelledby="comments-label"><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.dateAdded}">
-				<li class="fieldcontain">
-					<span id="dateAdded-label" class="property-label"><g:message code="item.dateAdded.label" default="Date Added" /></span>
-					
-						<span class="property-value" aria-labelledby="dateAdded-label"><g:formatDate date="${itemInstance?.dateAdded}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.description}">
-				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="item.description.label" default="Description" /></span>
-					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${itemInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.itemName}">
-				<li class="fieldcontain">
-					<span id="itemName-label" class="property-label"><g:message code="item.itemName.label" default="Item Name" /></span>
-					
-						<span class="property-value" aria-labelledby="itemName-label"><g:fieldValue bean="${itemInstance}" field="itemName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.price}">
-				<li class="fieldcontain">
-					<span id="price-label" class="property-label"><g:message code="item.price.label" default="Price" /></span>
-					
-						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${itemInstance}" field="price"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${itemInstance?.snaphUser}">
-				<li class="fieldcontain">
-					<span id="snaphUser-label" class="property-label"><g:message code="item.snaphUser.label" default="Snaph User" /></span>
-					
-						<span class="property-value" aria-labelledby="snaphUser-label"><g:link controller="snaphUser" action="show" id="${itemInstance?.snaphUser?.id}">${itemInstance?.snaphUser?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${itemInstance?.id}" />
-					<g:link class="edit" action="edit" id="${itemInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+<head>
+<meta name="layout" content="snaph">
+<g:set var="entityName"
+	value="${message(code: 'item.label', default: 'Item')}" />
+<title><g:message code="default.show.label" args="[entityName]" /></title>
+</head>
+<body>
+	<div class="container" style="width: 62%; margin: 0px auto; position:relative; margin-top:2%">
+			<p class="detailed_item_name">
+				${fieldValue(bean: itemInstance, field: "itemName")}
+			</p>
+			<img class="item_photo_on_details"
+				src="${createLink(controller:'item', action:'displayLogo', id:"${itemInstance.id}")}" />
+			<p class="item_price_on_details" style="margin-top: -43%; margin-left: 70.9%;">
+				<b>Price: </b>${fieldValue(bean: itemInstance, field: "price")}
+			</p>
+			<div class="user_wrapper_on_details" style="float: left; margin-left: 70.6%; width: 37%;">
+				<img class="user_photo"
+					src="/home/giselle/261158_284801801673_1294994_q.jpg" /> <a
+					class="user_name" href="${createLink(action: 'show', controller: 'snaphUser', id: "${itemInstance.snaphUser.id}")}">
+					${fieldValue(bean: itemInstance, field: "snaphUser")}
+				</a>
+			</div>
+			<p class="title_description_on_details">Description</p>
+			<div class="item_description_on_details" style="width: 34.6%;">
+				${fieldValue(bean: itemInstance, field: "description")}
+			</div>
+			<div class="comments_title_on_details">
+				<p class="comments_title">
+					What people say about ${fieldValue(bean: itemInstance, field: "itemName")}
+				</p>
+			</div>
+			<div class="comments_on_details">
+				<div class="single_comment_on_details">
+					<div class="user_on_single_comment">
+						<img class="userphoto_on_single_comment"
+							src="/home/giselle/261158_284801801673_1294994_q.jpg"></img>
+						<p class="username_on_single_comment">Username</p>
+					</div>
+					<div class="comment_description_on_single_comment">comment
+						comment comment comment comment comment comment comment comment</div>
+				</div>
+			</div>
+			<!-- end of comments_on_details -->
+			<div class="comment_on_title_on_details">
+				Comment on
+				${fieldValue(bean: itemInstance, field: "itemName")}
+			</div>
+			<textarea class="comment_textfield" rows="2" cols="88" value="Comment on this product..." 
+				style="width: 107%; height: 70px;"></textarea>
+			<input type="submit" value="Submit" />
+	</div> <!-- end of container -->
+	
+	<g:form>
+		<fieldset class="buttons">
+			<g:hiddenField name="id" value="${itemInstance?.id}" />
+			<g:link class="edit" action="edit" id="${itemInstance?.id}">
+				<g:message code="default.button.edit.label" default="Edit" />
+			</g:link>
+			<g:actionSubmit class="delete" action="delete"
+				value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+				onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+		</fieldset>
+	</g:form>
+	</div>
+</body>
 </html>
