@@ -10,13 +10,7 @@
 	<input type="file" id="image" name="image" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'category', 'error')} required">
-	<label for="category">
-		<g:message code="item.category.label" default="Category" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="category" name="category.id" from="${com.onb.snaph.Category.list()}" optionKey="id" required="" value="${itemInstance?.category?.id}" class="many-to-one"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'comments', 'error')} ">
 	<label for="comments">
