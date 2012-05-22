@@ -6,6 +6,7 @@ class User {
 
 	String username
 	String password
+	String displayName
 	boolean enabled 
 	boolean accountExpired
 	boolean accountLocked
@@ -14,6 +15,7 @@ class User {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+		displayName nullable: true
 	}
 
 	static mapping = {
@@ -36,7 +38,7 @@ class User {
 
 	@Override
 	public String toString() {
-		return username
+		return displayName
 	}
 
 	protected void encodePassword() {
