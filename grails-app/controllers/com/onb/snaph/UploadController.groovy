@@ -41,8 +41,8 @@ class UploadController {
 	}
 
 	def insertItem = { params ->
-		String token = params.token
-		String userId = params.userId
+		String token = params.facebookToken
+		String userId = params.facebookUserId
 		String name = params.name
 		def imageFile = params.image
 		byte[] image = imageFile.getBytes()
@@ -86,7 +86,7 @@ class UploadController {
 
 	def editItem = { params ->
 		def itemId = params.itemId
-		def userId = params.userId
+		def userId = params.facebookUserId
 		def itemInstance = Item.findById(itemId)
 		if(itemInstance == null){
 			response.status = 404	//Unauthorized
@@ -119,8 +119,9 @@ class UploadController {
 
 	def deleteItem = { params ->
 		def itemId = params.itemId
-		def userId = params.userId
+		def userId = params.facebookUserId
 		def itemInstance = Item.findById(itemId)
+		println("id:"+userId)
 		if(itemInstance == null){
 			response.status = 404	//Unauthorized
 			render "Could not delete item "+ itemId +" because it does not exist."

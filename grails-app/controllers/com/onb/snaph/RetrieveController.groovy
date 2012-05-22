@@ -1,6 +1,5 @@
 package com.onb.snaph
 
-import java.net.*
 import grails.converters.JSON
 
 class RetrieveController {
@@ -12,32 +11,36 @@ class RetrieveController {
 	def index() { }
 
 	def retrieveData(){
-		if(request.method == "POST"){
+		if(request.method == "POST") {
 			HashMap jsonMap = new HashMap()
-			System.out.println("token:"+params.token)
-			String token = params.token
+			System.out.println("facebookUserId:"+params.facebookUserId)
+			String token = params.facebookUserId
 			SnaphUser user = SnaphUser.findByFacebookID(token)
 			if(user == null){
 				System.out.println("user not found!");
+				response.status = 404
+				render "error"
 			}
-			System.out.println("retrieving data for userId:"+user.id);
-			List<Item> itemList = user.items.toList()
-			System.out.println("list size:"+itemList.size());
-			jsonMap.items = itemList.collect {item ->
-				byte[] image = item.image
-				String uri = "http://"+ipAddress+":"+port+"/Snaph/image/"+item.id
-				String itemURL = "http://"+ipAddress+":"+port+"/Snaph/item_profile/"+item.id
-				return [name: item.itemName, price: item.price, description: item.description, image:uri, itemId:item.id, itemUrl:itemURL ]
+			else {
+				System.out.println("retrieving data for userId:"+user.id);
+				List<Item> itemList = user.items.toList()
+				System.out.println("list size:"+itemList.size());
+				jsonMap.items = itemList.collect { item ->
+					byte[] image = item.image
+					String uri = "http://"+ipAddress+":"+port+"/Snaph/image/"+item.id
+					String itemURL = "http://"+ipAddress+":"+port+"/Snaph/item_profile/"+item.id
+					return [name: item.itemName, price: item.price, description: item.description, image:uri, itemId:item.id, itemUrl:itemURL ]
+				}
+
+				response.status = 200
+				render(contentType: "text/json") {
+					jsonMap
+				}
+				System.out.println("finished making jsonMap:"+jsonMap.toString());
 			}
 
-			response.status = 200
-			render(contentType: "text/json") {
-				jsonMap
-			}
-			System.out.println("finished making jsonMap:"+jsonMap.toString());
-			
 		}
-		else{
+		else {
 			System.out.println("invalid request. can only accept post");
 		}
 	}
