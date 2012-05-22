@@ -20,14 +20,17 @@ class CommentController {
     }
 
     def save() {
-        def commentInstance = new Comment(params)
+        def commentInstance = new Comment()
+		commentInstance.comment = params.comment
+		commentInstance.user = SnaphUser.get(params.user)
+		commentInstance.item = Item.get(params.item)
         if (!commentInstance.save(flush: true)) {
             render(view: "create", model: [commentInstance: commentInstance])
             return
         }
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
-        redirect(action: "show", id: commentInstance.id)
+        redirect(controller: "item", action: "show", id: params.item)
     }
 
     def show() {
