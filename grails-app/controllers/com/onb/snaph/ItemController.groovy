@@ -1,8 +1,13 @@
 package com.onb.snaph
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.social.facebook.api.Facebook
+import org.springframework.social.facebook.api.FacebookProfile
+import org.springframework.social.facebook.api.impl.FacebookTemplate
 
 class ItemController {
+	def springSecurityService
+	def facebookProfileDetailService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -11,10 +16,13 @@ class ItemController {
     }
 
     def list() {
+    	def user = springSecurityService.currentUser
+		FacebookProfile fbProfile = facebookProfileDetailService.getFbProfileDetails(user)
+	   
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count()]
+        [itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count(), name: fbProfile.getName()]
     }
-	
+
     def create() {
         [itemInstance: new Item(params)]
     }
@@ -40,6 +48,15 @@ class ItemController {
 
         [itemInstance: itemInstance]
     }
+
+	def viewImage(){
+		def itemInstance = Item.get(params.id)
+		byte[] imageArray = itemInstance.image
+		response.setHeader('Content-length', imageArray.length)
+		response.contentType = 'image/jpg' // or the appropriate image content type
+		response.outputStream << imageArray
+		response.outputStream.flush()
+	}
 	
     def edit() {
         def itemInstance = Item.get(params.id)
