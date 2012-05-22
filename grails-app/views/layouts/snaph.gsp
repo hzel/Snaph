@@ -25,9 +25,6 @@
 				Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>user</b></a>!<br>
 				<g:actionSubmit name="login" action="index" value="Login"/>
 				
-				<sec:ifAllGranted roles="ROLE_FACEBOOK">
-                	Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: "${itemInstance.snaphUser.id}")}"><sec:username/></a>!
-            	</sec:ifAllGranted>
 				<!-- if logged in
 				<g:actionSubmit name="login" action="index" value="Logout"/>
 				-->
