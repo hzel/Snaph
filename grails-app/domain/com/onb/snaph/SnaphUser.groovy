@@ -4,9 +4,9 @@ class SnaphUser extends User{
 
 	static hasMany = ['items' : Item]
 	String facebookID	//(from facebook profile)
-	
+
     static constraints = {
-		facebookID blank:false, null:false
+	facebookID blank:false, null:false
     }
 	
 	static mapping = {
