@@ -1,9 +1,7 @@
 package com.onb.snaph
 
 import org.springframework.dao.DataIntegrityViolationException
-import org.springframework.social.facebook.api.Facebook
 import org.springframework.social.facebook.api.FacebookProfile
-import org.springframework.social.facebook.api.impl.FacebookTemplate
 
 class ItemController {
 	def springSecurityService
