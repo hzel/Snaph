@@ -61,7 +61,7 @@ class UploadController {
 		if(user == null){
 			user = new SnaphUser()
 			user.facebookID = userId
-			user.username = "username"
+			user.username = "facebook_" + userId
 			user.password = "password"
 			user.enabled = true
 			user.save(flush: true)
