@@ -56,6 +56,7 @@ class UploadController {
 		newItem.price = price
 		//				newItem.category = Category.findByCategory("Electronics")
 		SnaphUser user = SnaphUser.findByFacebookID(userId)
+//		FacebookUser facebookUser = FacebookUser.findByUid(Long.parseLong(userId))
 
 		//				if user is not in database, make a new user
 		if(user == null){
@@ -65,7 +66,15 @@ class UploadController {
 			user.password = "password"
 			user.enabled = true
 			user.save(flush: true)
+			FacebookUser facebookUser = new FacebookUser(uid: Long.parseLong(userId), accessToken: token)
+			facebookUser.save()
 		}
+//		if (facebookUser == null){
+//			facebookUser = new FacebookUser(uid: Long.parseLong(userId), accessToken: token)
+//		}
+//		else{
+//			facebookUser.setAccessToken(token)
+//			}
 		newItem.snaphUser = user
 		newItem.comments = null
 
