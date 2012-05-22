@@ -22,7 +22,7 @@
 		<div class="header">
 			<a href="${createLink(action: 'list', controller: 'item')}"><g:img id="snaph_logo" uri="/images/SnaphLogo.gif"/></a>
 			<g:form controller="login" class="buttons_container">
-				Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>user</b></a>!<br>
+				Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>${name}</b></a>!<br>
 				<g:actionSubmit name="login" action="index" value="Login"/>
 				
 				<!-- if logged in
