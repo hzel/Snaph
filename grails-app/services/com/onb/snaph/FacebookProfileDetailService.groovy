@@ -7,6 +7,7 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate
 class FacebookProfileDetailService {
 
     def getFbProfileDetails(User user) {
+		System.out.println("asdas" + user);
 		def username = user?.getUsername()
 		def uid = username.substring(username.indexOf("_") + 1)
 		
@@ -17,4 +18,9 @@ class FacebookProfileDetailService {
 		
 		return fbProfile
     }
+	
+	def getFbName(User user) {
+		FacebookProfile fbProfile = getFbProfileDetails(user)
+		return fbProfile.name
+	}
 }
