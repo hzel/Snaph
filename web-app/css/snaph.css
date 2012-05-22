@@ -5,6 +5,14 @@
 			   background-color: #989898; 
 			   padding: 10px;
 			}
+			#snaph_logo {
+			  width: 25%;
+			}
+			.buttons_container {
+			   float: right;
+			   margin-top: 2%;
+			   margin-right: 3%;
+			}
 			.menu_bar {
 			   background-color: #A8A8A8; 
 			   position: relative;
@@ -19,7 +27,7 @@
 			   height: 20px;
 			   background-color: #cccccc;
 			}
-			.left0 {
+			.item0 {
 			   position: relative;
 			   float: left;
 			   left: 60px;
@@ -46,12 +54,15 @@
    			   cursor: pointer;
    			   margin-right: -57px;
 			}
-			.comments_button {
+			.edit_delete_buttons {
 			   position: absolute;
-			   top: 20px;
-			   right: 50px;
+			   bottom: 40px;			
 			}
-			.left1 {
+			#edit-item {
+			   margin-left: 30%;
+			   margin-right: 30%;			
+			}
+			.item1 {
 			   position: relative;
 			   float: left;
 			   left: 85px;
@@ -59,7 +70,7 @@
 			   height: 300px;
 			   background-color: #ffffff
 			}
-			.left2 {
+			.item2 {
 			   position: relative;
 			   float: left;
 			   left: 110px;
@@ -67,7 +78,7 @@
 			   height: 300px;
 			   background-color: #ffffff
 			}
-			.left3 {
+			.item3 {
 			   position: relative;
 			   float: left;
 			   left: 135px;
@@ -115,7 +126,7 @@
 			   font-size: 14px;
 			}
 			.details_outer_div {
-display:none;
+			   display:none;
 			   background-color: #000000;
 			   position: fixed;
 			   height: 100%;
@@ -125,7 +136,7 @@ display:none;
 			   z-index: 20;
 			}
 			.details_div {
-display:none;
+			   display:none;
 			   background-color: #ffffff;
 			   position: fixed;
 			   margin-top: -23%;
@@ -238,7 +249,6 @@ display:none;
 			   margin-top: 10px;
 			   font-size: 12px;
 			}
-			
 			.user_wrapper_on_user_gallery {
 			   /**margin-top: -17%;**/
 			   background-color: #ffffff;

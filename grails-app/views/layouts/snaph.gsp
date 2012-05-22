@@ -20,21 +20,20 @@
 	<body>
 	
 		<div class="header">
-			<button onclick="">Join Snaph</button>
-		    <button onclick="">Login</button>
-		    <div class="nav" role="navigation">
-				<ul>
-					<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				</ul>
-			</div>
-	   	</div>
-	   	<div class="menu_bar">
-	      	<a class="home_button" href="${createLink(action: 'list', controller: 'item')}">HOME</a>
-	      	<input type="text"></input>
-	      	<button onclick="">Search</button>
-	   	</div>
-	   	
+			<a href="${createLink(action: 'list', controller: 'item')}"><g:img id="snaph_logo" uri="/images/SnaphLogo.gif"/></a>
+			<g:form controller="login" class="buttons_container">
+				Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>user</b></a>!<br>
+				<g:actionSubmit name="login" action="index" value="Login"/>
+				
+				<sec:ifAllGranted roles="ROLE_FACEBOOK">
+                	Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: "${itemInstance.snaphUser.id}")}"><sec:username/></a>!
+            	</sec:ifAllGranted>
+				<!-- if logged in
+				<g:actionSubmit name="login" action="index" value="Logout"/>
+				-->
+			</g:form>
+		</div>
+	   	<div class="menu_bar"></div>
 	   	
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
