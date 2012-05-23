@@ -22,9 +22,13 @@
 		<div class="header">
 			<a href="${createLink(action: 'list', controller: 'item')}"><g:img id="snaph_logo" uri="/images/SnaphLogo.gif"/></a>
 			<g:form controller="login" class="buttons_container">
-				Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>${name}</b></a>!<br>
-				<g:actionSubmit name="login" action="index" value="Login"/>
-				
+			 <sec:ifNotGranted roles="ROLE_FACEBOOK">
+			  Welcome, guest!
+              <li><facebookAuth:connect permissions="${['email', 'user_about_me']}"/></li>
+            </sec:ifNotGranted>
+            <sec:ifAllGranted roles="ROLE_FACEBOOK">
+               Welcome, <a href="${createLink(action: 'show', controller: 'snaphUser', id: 1)}"><b>${name}${profPic}</b></a>!<br>
+            </sec:ifAllGranted>
 				<!-- if logged in
 				<g:actionSubmit name="login" action="index" value="Logout"/>
 				-->
