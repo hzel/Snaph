@@ -29,7 +29,7 @@
 		<p class="item_price_on_details"
 			style="margin-top: -43%; margin-left: 70.9%;">
 			<b>Price: </b>
-			${fieldValue(bean: itemInstance, field: "price")}
+			PHP ${fieldValue(bean: itemInstance, field: "price")}
 		</p>
 		<div class="user_wrapper_on_details"
 			style="float: left; margin-left: 70.6%; width: 37%;">

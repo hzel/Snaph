@@ -22,7 +22,7 @@
 			 		<div class=<%= "item" + ((i%3)+1) %>>
 			 			<img src="${createLink(controller: 'item', action:'displayLogo', id:"${itemInstance.id}")}" class="item_photo" />
 						<p class="item_name">${fieldValue(bean: itemInstance, field: "itemName")}</p>
-						<p class="item_price">${fieldValue(bean: itemInstance, field: "price")}</p>
+						<p class="item_price">PHP ${fieldValue(bean: itemInstance, field: "price")}</p>
 					    <div class="wrapper_on_hover1">
 							<a class="fbicon_button" href="http://www.facebook.com/"><g:img uri="/images/fb-icon.png"/></a>
 							<g:img uri="/images/details-button.gif" class="details_button" id="${itemInstance.id}" 
@@ -50,7 +50,7 @@
 					<div class="details_div" >
 						<p class="detailed_item_name">${fieldValue(bean: itemInstance, field: "itemName")}</p>
 					   	<img src="${createLink(controller: 'item', action:'displayLogo', id:"${itemInstance.id}")}" class="item_photo_on_details" />
-					   	<p class="item_price_on_details">${fieldValue(bean: itemInstance, field: "price")}</p>
+					   	<p class="item_price_on_details">PHP ${fieldValue(bean: itemInstance, field: "price")}</p>
 			            <div class="user_wrapper_on_details">
 							<img class="user_photo" src="/home/giselle/261158_284801801673_1294994_q.jpg"/>
 					   		<a class="user_name" href="${createLink(action: 'show', controller: 'snaphUser', id: "${itemInstance.snaphUser.id}")}">${fieldValue(bean: itemInstance, field: "snaphUser")}</a>
