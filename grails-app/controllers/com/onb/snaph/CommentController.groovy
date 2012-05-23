@@ -1,10 +1,14 @@
 package com.onb.snaph
 
 import org.springframework.dao.*
+import org.springframework.social.facebook.api.FacebookProfile
 
 class CommentController {
-
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def springSecurityService
+	def facebookProfileDetailService
+	
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -20,6 +24,8 @@ class CommentController {
     }
 
     def save() {
+//		def currentUser = springSecurityService.currentUser
+//		SnaphUser user = facebookProfileDetailService.getSnaphUser(currentUser)
         def commentInstance = new Comment()
 		commentInstance.comment = params.comment
 		commentInstance.user = SnaphUser.get(params.user)
@@ -40,8 +46,9 @@ class CommentController {
             redirect(action: "list")
             return
         }
-
-        [commentInstance: commentInstance]
+		def name = FacebookProfileDetailService.getFbName(commentInstance.user)
+		println "name:"+name
+        [commentInstance: commentInstance, name: name]
     }
 
     def edit() {
@@ -103,4 +110,11 @@ class CommentController {
             redirect(action: "show", id: params.id)
         }
     }
+	
+//	def getCommentName(){
+//		def commentInstance = Comment.get(params.id)
+//		def name = FacebookProfileDetailService.getFbName(commentInstance.user)
+//		println "name:"+name
+//		return [commenterName: name]
+//	}
 }
