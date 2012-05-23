@@ -1,11 +1,14 @@
 package com.onb.snaph
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.social.facebook.api.FacebookLink
 import org.springframework.social.facebook.api.FacebookProfile
 
 class ItemController {
 	def springSecurityService
 	def facebookProfileDetailService
+	def updateStatusService
+	def facebookDisplayPhotoService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -15,10 +18,16 @@ class ItemController {
 
     def list() {
     	def user = springSecurityService.currentUser
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		
+		if(user!=null){
 		FacebookProfile fbProfile = facebookProfileDetailService.getFbProfileDetails(user)
-	   
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count(), name: fbProfile.getName()]
+		def profileImage = facebookDisplayPhotoService.getDisplayPhoto(user)
+		[itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count(), name: fbProfile.getName(), profPic: profileImage]
+		}
+		else{
+		[itemInstanceList: Item.list(sort:"id",order:"desc"), itemInstanceTotal: Item.count(), name: 'guest']
+		}
     }
 
     def create() {
@@ -121,5 +130,11 @@ class ItemController {
 		response.contentType = 'image/jpeg'
 		response.contentLength = itemInstance.image.length
 		response.outputStream.write(itemInstance.image)
+	}
+	
+	def postToFb() {
+    	def user = springSecurityService.currentUser
+		FacebookLink link = updateStatusService.updateStatus(user, params.id)
+		redirect(action: "list")
 	}
 }
