@@ -21,7 +21,7 @@
 					   	<a class="user_name" href="${createLink(action: 'show', controller: 'snaphUser', id: "${itemInstance.snaphUser.id}")}">${fieldValue(bean: itemInstance, field: "snaphUser")}</a>
 					</div> <!-- end of user_wrapper -->
 				    <div class="wrapper_on_hover1">
-						<a class="fbicon_button" href="http://www.facebook.com/"><g:img uri="/images/fb-icon.png"/></a>
+						<a class="fbicon_button" href="${createLink(action:'postToFb', id:"${itemInstance.id}")}"><g:img uri="/images/fb-icon.png"/></a>
 						<g:img uri="/images/details-button.gif" class="details_button" id="${itemInstance.id}" 
 								onclick="showContainer(${itemInstance.id});"/>
 					</div> <!-- end of wrapper_on_hover -->
@@ -53,7 +53,7 @@
 									<div class="user_on_single_comment">
 										<img class="userphoto_on_single_comment"
 											src="/home/giselle/261158_284801801673_1294994_q.jpg"></img>
-										<p class="username_on_single_comment">${fieldValue(bean: commentInstance, field: "user")}</p>
+										<p class="username_on_single_comment">	${fieldValue(bean: commentInstance, field: "user")}</p>
 									</div>
 									<div class="comment_description_on_single_comment">
 										${fieldValue(bean: commentInstance, field: "comment")}
